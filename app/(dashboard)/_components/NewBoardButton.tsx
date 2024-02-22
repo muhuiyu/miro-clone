@@ -4,6 +4,7 @@ import { api } from '@/convex/_generated/api'
 import { useApiMutation } from '@/hooks/useApiMutation'
 import { cn } from '@/lib/utils'
 import { Plus } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 
 interface Props {
@@ -11,6 +12,7 @@ interface Props {
   disabled?: boolean
 }
 const NewBoardButton = ({ orgId, disabled }: Props) => {
+  const router = useRouter()
   const { mutate, pending } = useApiMutation(api.board.create)
 
   const onClick = () => {
@@ -20,7 +22,7 @@ const NewBoardButton = ({ orgId, disabled }: Props) => {
     })
       .then((id) => {
         toast.success('Board created')
-        // TODO: redirect to the /board/{id}
+        router.push(`/boards/${id}`)
       })
       .catch(() => toast.error('Failed to create board'))
   }
