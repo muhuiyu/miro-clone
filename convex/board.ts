@@ -1,5 +1,5 @@
 import { v } from 'convex/values'
-import { mutation } from './_generated/server'
+import { mutation, query } from './_generated/server'
 
 const images = [
     '/placeholders/1.svg',
@@ -170,5 +170,14 @@ const unfavorite = mutation({
     }
 })
 
-export { create, favorite, remove, unfavorite, update }
+
+const get = query({
+    args: { id: v.id("boards") },
+    handler: async (ctx, args) => {
+        const board = ctx.db.get(args.id)  
+        return board;
+    },
+})
+
+export { create, favorite, get, remove, unfavorite, update }
 
