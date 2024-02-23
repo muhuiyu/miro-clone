@@ -2,7 +2,7 @@
 
 import { Info } from './info'
 import Participants from './participants'
-import Toolbar from './toolbar'
+import Toolbar from './Toolbar'
 
 interface CanvasProps {
   boardId: string
