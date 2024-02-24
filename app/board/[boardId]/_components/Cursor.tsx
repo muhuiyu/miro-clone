@@ -11,7 +11,7 @@ interface CursorProps {
 
 const Cursor = memo(({ connectionId }: CursorProps) => {
   const info = useOther(connectionId, (user) => user?.info)
-  const cursor = useOther(connectionId, (user) => user?.presence.cursor)
+  const cursor = useOther(connectionId, (user) => user.presence.cursor)
   const name = info?.name || 'Anonymous'
 
   if (!cursor) {
@@ -23,7 +23,7 @@ const Cursor = memo(({ connectionId }: CursorProps) => {
   return (
     <foreignObject
       style={{
-        transform: `translate(${x}px, ${y}px)`,
+        transform: `translateX(${x}px) translateY(${y}px)`,
       }}
       height={50}
       width={name.length * 10 + 24}
@@ -37,7 +37,7 @@ const Cursor = memo(({ connectionId }: CursorProps) => {
         }}
       />
       <div
-        className="absolute left-5 py-0.5 px-1.5 rounded-md text-xs text-white font-semibold"
+        className="absolute left-5 px-1.5 py-0.5 rounded-md text-xs text-white font-semibold"
         style={{ backgroundColor: connectionIdToColor(connectionId) }}
       >
         {name}

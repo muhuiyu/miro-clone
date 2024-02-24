@@ -2,7 +2,7 @@
 
 import { useStorage } from '@/liveblocks.config'
 import { LayerType } from '@/types/canvas'
-import React, { memo } from 'react'
+import { memo } from 'react'
 import Rectangle from './Rectangle'
 
 interface LayerPreviewProps {
